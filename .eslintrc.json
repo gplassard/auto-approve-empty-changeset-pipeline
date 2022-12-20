@@ -147,9 +147,8 @@
       "error",
       {
         "devDependencies": [
-          "**/test/**",
-          "**/build-tools/**",
-          "**/projenrc/**",
+          "**/bin/**",
+          "**/src/cdk/**",
           ".projenrc.ts",
           "projenrc/**/*.ts"
         ],

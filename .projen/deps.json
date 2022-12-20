@@ -24,6 +24,22 @@
       "type": "build"
     },
     {
+      "name": "aws-cdk",
+      "type": "build"
+    },
+    {
+      "name": "aws-cdk-lib",
+      "type": "build"
+    },
+    {
+      "name": "constructs",
+      "type": "build"
+    },
+    {
+      "name": "esbuild",
+      "type": "build"
+    },
+    {
       "name": "eslint-import-resolver-node",
       "type": "build"
     },
