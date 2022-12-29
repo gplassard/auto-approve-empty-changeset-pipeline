@@ -5,15 +5,15 @@ import {
   CloudFormationExecuteChangeSetAction,
   CodeBuildAction,
   GitHubSourceAction,
-  LambdaInvokeAction,
   ManualApprovalAction,
 } from 'aws-cdk-lib/aws-codepipeline-actions';
+import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
 import { Effect, PolicyStatement, Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam';
-import { Architecture, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { Architecture, Runtime, Tracing } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { Bucket } from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
-import { UserParameters } from '../../shared/model';
+import { AutoApprovalEnvironment } from '../../shared/model';
 
 interface PipelineStackProps extends StackProps {
   stackName: string;
@@ -28,8 +28,8 @@ export class PipelineStack extends Stack {
     const appStackArn = Arn.format({ service: 'cloudformation', resource: 'stack', resourceName: appStackName }, this);
     const changeSetName = 'codepipeline';
     const pipelineName = `${props.stackName}-pipeline`;
-    const pipelineArn = Arn.format({ service: 'codepipeline', resource: pipelineName }, this);
     const changeSetStage = 'changeSetStage';
+    const approvalActionName = 'goReviewTheChangeset';
 
     const artifactBucket = new Bucket(this, 'bucket', {
       autoDeleteObjects: true,
@@ -94,25 +94,23 @@ export class PipelineStack extends Stack {
       }),
     });
 
+    const env: AutoApprovalEnvironment = {
+      stackName: appStackName,
+      pipelineName: pipelineName,
+      changeSetName: changeSetName,
+      approvalStageName: changeSetStage,
+      approvalActionName: approvalActionName,
+    };
     const autoApproveLambda = new NodejsFunction(this, 'autoapprove', {
       architecture: Architecture.ARM_64,
       entry: 'src/lambdas/handlers/auto-approve.ts',
       runtime: Runtime.NODEJS_18_X,
-
+      tracing: Tracing.ACTIVE,
       environment: {
         LOG_LEVEL: 'DEBUG',
+        ...env,
       },
     });
-    autoApproveLambda.addToRolePolicy(new PolicyStatement({
-      effect: Effect.ALLOW,
-      actions: ['cloudformation:DescribeChangeSet'],
-      resources: [`${appStackArn}/*`],
-    }));
-    autoApproveLambda.addToRolePolicy(new PolicyStatement({
-      effect: Effect.ALLOW,
-      actions: ['codepipeline:PutApprovalResult', 'codepipeline:GetPipelineState'],
-      resources: [pipelineArn, `${pipelineArn}/*`],
-    }));
 
 
     // FIXME url seem not to work properly
@@ -122,20 +120,6 @@ export class PipelineStack extends Stack {
       additionalInformation: 'You should review the changeset from this commit #{GITHUB.CommitUrl}',
       externalEntityLink: `https://${region}.console.aws.amazon.com/cloudformation/home?region=${region}#/stacks/changesets?stackId=${encodeURIComponent(appStackName)}`,
     });
-    const userParameters: UserParameters = {
-      stackName: appStackName,
-      changeSetName: changeSetName,
-      pipelineName: pipelineName,
-      approvalActionName: manualApproval.actionProperties.actionName,
-      approvalStageName: changeSetStage,
-      pipelineExecutionId: '#{codepipeline.PipelineExecutionId}',
-    };
-    const autoApproveEmptyChangeset = new LambdaInvokeAction({
-      runOrder: 2,
-      actionName: 'autoApproveEmptyChangeset',
-      lambda: autoApproveLambda,
-      userParameters: userParameters,
-    });
 
     const deployCloudformation = new CloudFormationExecuteChangeSetAction({
       actionName: 'deployCloudformation',
@@ -143,14 +127,36 @@ export class PipelineStack extends Stack {
       stackName: appStackName,
     });
 
-    new Pipeline(this, 'pipeline', {
+    const pipeline = new Pipeline(this, 'pipeline', {
       pipelineName,
       artifactBucket,
       stages: [
         { stageName: 'github', actions: [source] },
-        { stageName: changeSetStage, actions: [codebuild, manualApproval, autoApproveEmptyChangeset] },
+        { stageName: changeSetStage, actions: [codebuild, manualApproval] },
         { stageName: 'deployCloudformation', actions: [deployCloudformation] },
       ],
     });
+
+    pipeline.onEvent('manualApprovalTrigger', {
+      target: new LambdaFunction(autoApproveLambda),
+      eventPattern: {
+        detail: {
+          action: [approvalActionName],
+          stage: [changeSetStage],
+          state: ['STARTED'],
+        },
+      },
+    });
+    autoApproveLambda.addToRolePolicy(new PolicyStatement({
+      effect: Effect.ALLOW,
+      actions: ['cloudformation:DescribeChangeSet'],
+      resources: [`${appStackArn}/*`],
+    }));
+    autoApproveLambda.addToRolePolicy(new PolicyStatement({
+      effect: Effect.ALLOW,
+      actions: ['codepipeline:GetPipelineState'],
+      resources: [pipeline.pipelineArn],
+    }));
+    manualApproval.grantManualApproval(autoApproveLambda);
   }
 }

@@ -1,10 +1,9 @@
-export interface UserParameters {
+export interface AutoApprovalEnvironment {
   stackName: string;
   changeSetName: string;
   pipelineName: string;
   approvalStageName: string;
   approvalActionName: string;
-  pipelineExecutionId: string;
 }
 
 export enum AutoApproveOutcome {

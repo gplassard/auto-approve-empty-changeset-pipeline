@@ -19,6 +19,7 @@ const project = new TypescriptApplicationProject({
   tsconfig: {
     compilerOptions: {
       skipLibCheck: true,
+      noUnusedLocals: false,
     },
   },
 });
