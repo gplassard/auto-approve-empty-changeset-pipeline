@@ -4,7 +4,8 @@ import { TypescriptApplicationProject } from '@gplassard/projen-extensions';
 // opinionated wrapper around projen TypeScriptProject
 const project = new TypescriptApplicationProject({
   name: 'auto-approve-empty-changeset-pipeline',
-  devDeps: ['aws-cdk', 'aws-cdk-lib', 'constructs', 'esbuild'],
+  devDeps: ['aws-cdk', 'aws-cdk-lib', 'constructs', 'esbuild', '@types/aws-lambda'],
+  deps: ['@aws-sdk/client-codepipeline', '@aws-sdk/client-cloudformation', '@aws-lambda-powertools/logger'],
   srcdir: '.',
   scripts: {
     'cdk:pipeline': 'yarn cdk --app \'ts-node bin/pipeline.ts\'',
