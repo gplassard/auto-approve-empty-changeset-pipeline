@@ -5,7 +5,7 @@ import { TypescriptApplicationProject } from '@gplassard/projen-extensions';
 const project = new TypescriptApplicationProject({
   name: 'auto-approve-empty-changeset-pipeline',
   devDeps: ['aws-cdk', 'aws-cdk-lib', 'constructs', 'esbuild', '@types/aws-lambda'],
-  deps: ['@aws-sdk/client-codepipeline', '@aws-sdk/client-cloudformation', '@aws-lambda-powertools/logger'],
+  deps: ['@aws-sdk/client-codepipeline', '@aws-sdk/client-cloudformation', '@aws-lambda-powertools/logger', '@aws-lambda-powertools/tracer'],
   srcdir: '.',
   scripts: {
     'cdk:pipeline': 'yarn cdk --app \'ts-node bin/pipeline.ts\'',

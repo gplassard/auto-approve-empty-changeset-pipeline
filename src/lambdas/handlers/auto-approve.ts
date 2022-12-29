@@ -1,4 +1,5 @@
 import { Logger } from '@aws-lambda-powertools/logger';
+import { Tracer } from '@aws-lambda-powertools/tracer';
 import { ChangeSetStatus, CloudFormation } from '@aws-sdk/client-cloudformation';
 import { ApprovalStatus, CodePipeline } from '@aws-sdk/client-codepipeline';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -7,9 +8,10 @@ import { Context } from 'aws-lambda';
 import { CodePipelineCloudWatchStageEvent } from 'aws-lambda/trigger/codepipeline-cloudwatch-stage';
 import { AutoApprovalEnvironment, AutoApproveOutcome } from '../../shared/model';
 
-const codePipeline = new CodePipeline({});
-const cloudFormation = new CloudFormation({});
 const logger = new Logger({ serviceName: 'auto-approve' });
+const tracer = new Tracer({ serviceName: 'auto-approve' });
+const codePipeline = tracer.captureAWSv3Client(new CodePipeline({}));
+const cloudFormation = tracer.captureAWSv3Client(new CloudFormation({}));
 
 export interface AutoApprovalParameters {
   stackName: string;
