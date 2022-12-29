@@ -16,5 +16,10 @@ const project = new TypescriptApplicationProject({
     dirs: ['.'],
     devdirs: ['bin', 'src/cdk'],
   },
+  tsconfig: {
+    compilerOptions: {
+      skipLibCheck: true,
+    },
+  },
 });
 project.synth();
