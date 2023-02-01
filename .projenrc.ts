@@ -11,7 +11,7 @@ const project = new TypescriptApplicationProject({
     'cdk:pipeline': 'yarn cdk --app \'ts-node bin/pipeline.ts\'',
     'cdk:app': 'yarn cdk --app \'ts-node bin/app.ts\'',
   },
-  gitignore: [...TypescriptApplicationProject.DEFAULT_GITIGNORE, 'cdk.out'],
+  gitignore: ['cdk.out'],
   eslintOptions: {
     dirs: ['.'],
     devdirs: ['bin', 'src/cdk'],
