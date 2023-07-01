@@ -127,7 +127,7 @@ exports[`PipelineStack should produce the expected cloudformation 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "40aa87cdf43c4095cec18bc443965f22ab2f8c1ace47e482a0ba4e35d83b0cc9.zip",
+          "S3Key": "64267bdade6530c78c99e1df05c9336e81c8dad82fdb06133ee90f7390f69d26.zip",
         },
         "Description": {
           "Fn::Join": [
@@ -141,7 +141,7 @@ exports[`PipelineStack should produce the expected cloudformation 1`] = `
             ],
           ],
         },
-        "Handler": "__entrypoint__.handler",
+        "Handler": "index.handler",
         "MemorySize": 128,
         "Role": {
           "Fn::GetAtt": [
@@ -189,7 +189,7 @@ exports[`PipelineStack should produce the expected cloudformation 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "38146e886add05c4b068b74549e8f3fbc5fe9e609e1aa7c48317824bf677e15c.zip",
+          "S3Key": "7f0ccc458ca09d8b62689e1417cd1bc610306c5d068ddfed15770dda11d15da0.zip",
         },
         "Environment": {
           "Variables": {
