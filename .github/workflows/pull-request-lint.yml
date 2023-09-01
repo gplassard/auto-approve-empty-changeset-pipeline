@@ -33,3 +33,4 @@ jobs:
             style
             test
           requireScope: true
+          githubBaseUrl: ${{ github.api_url }}
