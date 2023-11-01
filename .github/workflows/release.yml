@@ -21,17 +21,21 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "18"
-          registry-url: https://npm.pkg.github.com
-          cache: yarn
       - name: Set git identity
         run: |-
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: "8"
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.8.0
+          registry-url: https://npm.pkg.github.com
+          cache: pnpm
       - name: Install dependencies
-        run: yarn install --check-files --frozen-lockfile
+        run: pnpm i --frozen-lockfile
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: release
@@ -59,7 +63,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 20.8.0
       - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:

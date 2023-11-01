@@ -24,7 +24,7 @@ exports[`PipelineStack should produce the expected cloudformation 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "5194f926380567b6fdffc61629afdad2afc818614cb227df45e499c69db163a7.zip",
+          "S3Key": "b7f33614a69548d6bafe224d751a7ef238cde19097415e553fe8b63a4c8fd8a6.zip",
         },
         "Description": {
           "Fn::Join": [
@@ -86,7 +86,7 @@ exports[`PipelineStack should produce the expected cloudformation 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "ab60b38c2ec71ff9cc85aa51c56f5a9dcc7299c2d2b19d6fa4719b53987eeb66.zip",
+          "S3Key": "f404eadf46c98b861177a5ece92b5eae18e32bcbb75f0cc8d94e67194ac28c56.zip",
         },
         "Environment": {
           "Variables": {
@@ -274,6 +274,7 @@ exports[`PipelineStack should produce the expected cloudformation 1`] = `
           "Statement": [
             {
               "Action": [
+                "s3:PutBucketPolicy",
                 "s3:GetBucket*",
                 "s3:List*",
                 "s3:DeleteObject*",
