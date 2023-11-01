@@ -20,13 +20,17 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: "8"
       - uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: 20.8.0
           registry-url: https://npm.pkg.github.com
-          cache: yarn
+          cache: pnpm
       - name: Install dependencies
-        run: yarn install --check-files
+        run: pnpm i --no-frozen-lockfile
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: build

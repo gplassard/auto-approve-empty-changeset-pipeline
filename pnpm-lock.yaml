@@ -41,7 +41,7 @@ devDependencies:
     specifier: ^2.99.1
     version: 2.103.1(constructs@10.3.0)
   constructs:
-    specifier: ^10.2.70
+    specifier: ^10.0.0
     version: 10.3.0
   esbuild:
     specifier: ^0.19.4
@@ -67,6 +67,9 @@ devDependencies:
   npm-check-updates:
     specifier: ^16
     version: 16.14.6
+  projen:
+    specifier: ^0.76.16
+    version: 0.76.16(constructs@10.3.0)
   standard-version:
     specifier: ^9
     version: 9.5.0
