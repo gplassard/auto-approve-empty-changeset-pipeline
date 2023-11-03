@@ -35,11 +35,11 @@ devDependencies:
     specifier: ^6
     version: 6.9.1(eslint@8.52.0)(typescript@4.9.5)
   aws-cdk:
-    specifier: ^2.103.1
-    version: 2.103.1
+    specifier: ^2.104.0
+    version: 2.104.0
   aws-cdk-lib:
-    specifier: ^2.103.1
-    version: 2.103.1(constructs@10.3.0)
+    specifier: ^2.104.0
+    version: 2.104.0(constructs@10.3.0)
   constructs:
     specifier: ^10.0.0
     version: 10.3.0
@@ -68,8 +68,8 @@ devDependencies:
     specifier: ^16
     version: 16.14.6
   projen:
-    specifier: ^0.76.16
-    version: 0.76.16(constructs@10.3.0)
+    specifier: ^0.76.17
+    version: 0.76.17(constructs@10.3.0)
   standard-version:
     specifier: ^9
     version: 9.5.0
@@ -1213,7 +1213,7 @@ packages:
   /@gplassard/projen-extensions@0.0.67(constructs@10.3.0):
     resolution: {integrity: sha512-/BHcLf/us5cLQYo8f6vue6yK5sSeyN5YptlCTq+iSlaeiuo2RY8rjf4AwxPqd+A2sjdC9DZqSE1u0fYtq1V0Fw==, tarball: https://npm.pkg.github.com/download/@gplassard/projen-extensions/0.0.67/de8fc8638afd9bed2eaf9c8671315e9d97c3a384}
     dependencies:
-      projen: 0.76.16(constructs@10.3.0)
+      projen: 0.76.17(constructs@10.3.0)
     transitivePeerDependencies:
       - constructs
     dev: true
@@ -2611,8 +2611,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /aws-cdk-lib@2.103.1(constructs@10.3.0):
-    resolution: {integrity: sha512-Y9P4dv+vdfTiqTGeYebajQ30OiPgsIDGonpaxjQYA1A4RYemYu62bX1J+QQBJh7FNd3amybD7YgJe3jKIUQuHw==}
+  /aws-cdk-lib@2.104.0(constructs@10.3.0):
+    resolution: {integrity: sha512-gD5KD2j8C5ff7j4RTA5ajFDNnpw4EvVhWMgWWrOyIEa9OkndEXwzhvCvwbEpwmgSUvnmsmbiHTBaLg8KVP+yKA==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
@@ -2634,8 +2634,8 @@ packages:
       - table
       - yaml
 
-  /aws-cdk@2.103.1:
-    resolution: {integrity: sha512-5DXPlMi8Gf/a6fMqwY6uVwuR21PDDNGkAGkMVTTuaiulc4RsMjQUGq8I4xaPIYQRvR+VHFU+JQ5j5PnI5/gBrA==}
+  /aws-cdk@2.104.0:
+    resolution: {integrity: sha512-JuCafR5D1lnMKA88JUYhvRYeguozAWneC/n6kR1FUG+kXtXxpEqOxP91118dfJZYRw7FMIkHW8ewddvLwaCy5g==}
     engines: {node: '>= 14.15.0'}
     hasBin: true
     optionalDependencies:
@@ -6212,8 +6212,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen@0.76.16(constructs@10.3.0):
-    resolution: {integrity: sha512-+p6ZNVvDICn2lskDofSOgUSTI8Or0aAqyiKf9RhSaE2nTqwoObbf1b4wmw44hjiQWa1/pVP+IGUzCienDIA+Jw==}
+  /projen@0.76.17(constructs@10.3.0):
+    resolution: {integrity: sha512-i+n1l/kMeLV8ZvTNi7BGIiaCOnSouaiF/tkA6e36l2Fgzj9mYnsRvnZGxYQrobSrap3hzQEiGtKfDm5U8XgkeQ==}
     engines: {node: '>= 16.0.0'}
     hasBin: true
     peerDependencies:
