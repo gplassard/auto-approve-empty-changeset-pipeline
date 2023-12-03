@@ -14,7 +14,7 @@
     },
     {
       "name": "@types/node",
-      "version": "^16",
+      "version": "^18",
       "type": "build"
     },
     {
@@ -45,10 +45,6 @@
       "type": "build"
     },
     {
-      "name": "eslint-import-resolver-node",
-      "type": "build"
-    },
-    {
       "name": "eslint-import-resolver-typescript",
       "type": "build"
     },
@@ -68,11 +64,6 @@
     {
       "name": "jest-junit",
       "version": "^15",
-      "type": "build"
-    },
-    {
-      "name": "npm-check-updates",
-      "version": "^16",
       "type": "build"
     },
     {
