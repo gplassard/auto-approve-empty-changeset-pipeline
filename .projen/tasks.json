@@ -124,7 +124,8 @@
       "description": "Runs eslint against the codebase",
       "steps": [
         {
-          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern . bin src/cdk projenrc .projenrc.ts"
+          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern $@ . bin src/cdk projenrc .projenrc.ts",
+          "receiveArgs": true
         }
       ]
     },
@@ -154,7 +155,7 @@
           "exec": "mkdir -p dist/js"
         },
         {
-          "exec": "mv $(npm pack) dist/js/"
+          "exec": "mv $(pnpm pack) dist/js/"
         }
       ]
     },
