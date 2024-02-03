@@ -27,7 +27,6 @@
     "skipLibCheck": true
   },
   "include": [
-    ".projenrc.js",
     "./**/*.ts",
     "test/**/*.ts",
     ".projenrc.ts",
