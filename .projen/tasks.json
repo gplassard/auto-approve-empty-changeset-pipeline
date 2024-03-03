@@ -241,7 +241,7 @@
       },
       "steps": [
         {
-          "exec": "pnpx npm-check-updates@16 --upgrade --target=latest --peer --dep=dev,peer,prod,optional --filter=@gplassard/projen-extensions,@types/aws-lambda,@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,aws-cdk,aws-cdk-lib,constructs,esbuild,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,projen,standard-version,ts-jest,ts-node,typescript,@aws-lambda-powertools/logger,@aws-sdk/client-cloudformation,@aws-sdk/client-codepipeline"
+          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=latest --peer --dep=dev,peer,prod,optional --filter=@gplassard/projen-extensions,@types/aws-lambda,@types/jest,aws-cdk,aws-cdk-lib,esbuild,eslint-import-resolver-typescript,eslint-plugin-import,jest,projen,ts-jest,ts-node,typescript,@aws-lambda-powertools/logger,@aws-sdk/client-cloudformation,@aws-sdk/client-codepipeline"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"
