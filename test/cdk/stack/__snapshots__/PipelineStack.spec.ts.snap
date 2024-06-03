@@ -86,11 +86,10 @@ exports[`PipelineStack should produce the expected cloudformation 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "59b6cc541fea0eca8f6a72cd0fc7492f5f79417f091997c272f7f0664abc7fb0.zip",
+          "S3Key": "a99cc524274691e06d955c9ae7154255d859f5d019912055a6ccd5a2522336df.zip",
         },
         "Environment": {
           "Variables": {
-            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
             "LOG_LEVEL": "DEBUG",
           },
         },
