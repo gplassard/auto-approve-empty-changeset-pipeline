@@ -218,7 +218,7 @@ exports[`PipelineStack should produce the expected cloudformation 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "22d235683c8c455e1dfd969da967cb66f9597a1c1c8ae0025860bdccf9b36325.zip",
+          "S3Key": "288619571e6acbbbc6e001fb30f7d7f758a2af988c63dd6acd42fac2ebf0fe8b.zip",
         },
         "Environment": {
           "Variables": {
