@@ -32,7 +32,7 @@ jobs:
           version: "9"
       - uses: actions/setup-node@v4
         with:
-          node-version: 20.16.0
+          node-version: 20.17.0
           registry-url: https://npm.pkg.github.com
           cache: pnpm
       - name: Install dependencies
@@ -58,7 +58,7 @@ jobs:
         continue-on-error: true
       - name: Upload artifact
         if: ${{ steps.git_remote.outputs.latest_commit == github.sha }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.4.0
         with:
           name: build-artifact
           path: dist
@@ -73,7 +73,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: 20.16.0
+          node-version: 20.17.0
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
