@@ -123,6 +123,9 @@
     "eslint": {
       "name": "eslint",
       "description": "Runs eslint against the codebase",
+      "env": {
+        "ESLINT_USE_FLAT_CONFIG": "false"
+      },
       "steps": [
         {
           "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern $@ . bin src/cdk projenrc .projenrc.ts",
@@ -249,7 +252,7 @@
           "exec": "pnpm i --no-frozen-lockfile"
         },
         {
-          "exec": "pnpm update @gplassard/projen-extensions @types/aws-lambda @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-cdk aws-cdk-lib commit-and-tag-version constructs esbuild eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit projen ts-jest ts-node typescript @aws-lambda-powertools/logger @aws-sdk/client-cloudformation @aws-sdk/client-codepipeline"
+          "exec": "pnpm update @gplassard/projen-extensions @stylistic/eslint-plugin @types/aws-lambda @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-cdk aws-cdk-lib commit-and-tag-version constructs esbuild eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit projen ts-jest ts-node typescript @aws-lambda-powertools/logger @aws-sdk/client-cloudformation @aws-sdk/client-codepipeline"
         },
         {
           "exec": "npx projen"
