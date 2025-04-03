@@ -218,7 +218,7 @@ exports[`PipelineStack should produce the expected cloudformation 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "8a49d05b07e0cf4a628e1ffe21d726dec81d35a164f02a387f46cbcc98cafaa9.zip",
+          "S3Key": "ba8e03fe3fce53397a09512347363cfc9f6111564cb2fd7e4aea83a6e746d32b.zip",
         },
         "Environment": {
           "Variables": {
@@ -1008,19 +1008,9 @@ phases:
               "Effect": "Allow",
               "Principal": {
                 "AWS": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::",
-                      {
-                        "Ref": "AWS::AccountId",
-                      },
-                      ":root",
-                    ],
+                  "Fn::GetAtt": [
+                    "pipelineRole55399C5D",
+                    "Arn",
                   ],
                 },
               },
@@ -1087,19 +1077,9 @@ phases:
               "Effect": "Allow",
               "Principal": {
                 "AWS": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::",
-                      {
-                        "Ref": "AWS::AccountId",
-                      },
-                      ":root",
-                    ],
+                  "Fn::GetAtt": [
+                    "pipelineRole55399C5D",
+                    "Arn",
                   ],
                 },
               },
@@ -1149,19 +1129,9 @@ phases:
               "Effect": "Allow",
               "Principal": {
                 "AWS": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::",
-                      {
-                        "Ref": "AWS::AccountId",
-                      },
-                      ":root",
-                    ],
+                  "Fn::GetAtt": [
+                    "pipelineRole55399C5D",
+                    "Arn",
                   ],
                 },
               },
@@ -1181,19 +1151,9 @@ phases:
               "Effect": "Allow",
               "Principal": {
                 "AWS": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::",
-                      {
-                        "Ref": "AWS::AccountId",
-                      },
-                      ":root",
-                    ],
+                  "Fn::GetAtt": [
+                    "pipelineRole55399C5D",
+                    "Arn",
                   ],
                 },
               },
