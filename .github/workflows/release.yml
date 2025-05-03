@@ -32,10 +32,10 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: 10.7.0
+          version: 10.10.0
       - uses: actions/setup-node@v4
         with:
-          node-version: 22.14.0
+          node-version: 22.15.0
           registry-url: https://npm.pkg.github.com
           cache: pnpm
       - name: Install dependencies
@@ -76,7 +76,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: 22.14.0
+          node-version: 22.15.0
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -88,6 +88,4 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          GITHUB_REF: ${{ github.sha }}
-        run: errout=$(mktemp); gh release create $(cat dist/releasetag.txt) -R $GITHUB_REPOSITORY -F dist/changelog.md -t $(cat dist/releasetag.txt) --target $GITHUB_REF 2> $errout && true; exitcode=$?; if [ $exitcode -ne 0 ] && ! grep -q "Release.tag_name already exists" $errout; then cat $errout; exit $exitcode; fi
+        run: errout=$(mktemp); gh release create $(cat dist/releasetag.txt) -R $GITHUB_REPOSITORY -F dist/changelog.md -t $(cat dist/releasetag.txt) --target $GITHUB_SHA 2> $errout && true; exitcode=$?; if [ $exitcode -ne 0 ] && ! grep -q "Release.tag_name already exists" $errout; then cat $errout; exit $exitcode; fi

@@ -10,6 +10,9 @@ exports[`PipelineStack should produce the expected cloudformation 1`] = `
       "ap-east-1": {
         "value": "nodejs20.x",
       },
+      "ap-east-2": {
+        "value": "nodejs20.x",
+      },
       "ap-northeast-1": {
         "value": "nodejs20.x",
       },
@@ -118,6 +121,9 @@ exports[`PipelineStack should produce the expected cloudformation 1`] = `
       "us-isob-east-1": {
         "value": "nodejs18.x",
       },
+      "us-isob-west-1": {
+        "value": "nodejs18.x",
+      },
       "us-west-1": {
         "value": "nodejs20.x",
       },
@@ -218,7 +224,7 @@ exports[`PipelineStack should produce the expected cloudformation 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "ba8e03fe3fce53397a09512347363cfc9f6111564cb2fd7e4aea83a6e746d32b.zip",
+          "S3Key": "e9a364da495d1012b6d6927004aaf9b3b0b90acaa4b5bef976747436f331b11f.zip",
         },
         "Environment": {
           "Variables": {
