@@ -22,10 +22,10 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: 10.7.0
+          version: 10.10.0
       - uses: actions/setup-node@v4
         with:
-          node-version: 22.14.0
+          node-version: 22.15.0
           registry-url: https://npm.pkg.github.com
           cache: pnpm
       - name: Install dependencies
@@ -64,11 +64,13 @@ jobs:
     steps:
       - name: Generate token
         id: generate_token
-        uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a
+        uses: actions/create-github-app-token@3ff1caaa28b64c9cc276ce0a02e2ff584f3900c5
         with:
-          app_id: ${{ secrets.PROJEN_APP_ID }}
-          private_key: ${{ secrets.PROJEN_APP_PRIVATE_KEY }}
-          permissions: '{"pull_requests":"write","contents":"write","workflows":"write"}'
+          app-id: ${{ secrets.PROJEN_APP_ID }}
+          private-key: ${{ secrets.PROJEN_APP_PRIVATE_KEY }}
+          permission-pull-requests: write
+          permission-contents: write
+          permission-workflows: write
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Checkout
         uses: actions/checkout@v4
