@@ -35,6 +35,8 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: build
         run: npx projen build
+      - name: build-tests
+        run: pnpm run test:compile
       - name: Find mutations
         id: self_mutation
         run: |-

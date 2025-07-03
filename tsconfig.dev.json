@@ -29,6 +29,7 @@
   "include": [
     "./**/*.ts",
     "test/**/*.ts",
+    "vitest.config.ts",
     ".projenrc.ts",
     "projenrc/**/*.ts"
   ],

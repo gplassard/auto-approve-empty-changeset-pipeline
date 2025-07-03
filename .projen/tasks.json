@@ -204,20 +204,25 @@
       "description": "Run tests",
       "steps": [
         {
-          "exec": "jest --passWithNoTests --updateSnapshot",
+          "exec": "vitest run -u",
           "receiveArgs": true
-        },
+        }
+      ]
+    },
+    "test:compile": {
+      "name": "test:compile",
+      "steps": [
         {
-          "spawn": "eslint"
+          "exec": "tsc --noEmit --project tsconfig.dev.json"
         }
       ]
     },
     "test:watch": {
       "name": "test:watch",
-      "description": "Run jest in watch mode",
+      "description": "Run vitest in watch mode",
       "steps": [
         {
-          "exec": "jest --watch"
+          "exec": "vitest watch"
         }
       ]
     },
@@ -246,13 +251,13 @@
       },
       "steps": [
         {
-          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=latest --peer --no-deprecated --dep=dev,peer,prod,optional --filter=@gplassard/projen-extensions,@types/aws-lambda,@types/jest,@types/node,aws-cdk,aws-cdk-lib,esbuild,eslint-import-resolver-typescript,eslint-plugin-import,jest,projen,ts-jest,ts-node,typescript,@aws-lambda-powertools/logger,@aws-sdk/client-cloudformation,@aws-sdk/client-codepipeline"
+          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=latest --peer --no-deprecated --dep=dev,peer,prod,optional --filter=@gplassard/projen-extensions,@types/aws-lambda,@types/node,aws-cdk,aws-cdk-lib,esbuild,eslint-import-resolver-typescript,eslint-plugin-import,projen,ts-node,typescript,vitest,@aws-lambda-powertools/logger,@aws-sdk/client-cloudformation,@aws-sdk/client-codepipeline"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"
         },
         {
-          "exec": "pnpm update @gplassard/projen-extensions @stylistic/eslint-plugin @types/aws-lambda @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-cdk aws-cdk-lib commit-and-tag-version constructs esbuild eslint-import-resolver-typescript eslint-plugin-import eslint jest projen ts-jest ts-node typescript @aws-lambda-powertools/logger @aws-sdk/client-cloudformation @aws-sdk/client-codepipeline"
+          "exec": "pnpm update @gplassard/projen-extensions @stylistic/eslint-plugin @types/aws-lambda @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-cdk aws-cdk-lib commit-and-tag-version constructs esbuild eslint-import-resolver-typescript eslint-plugin-import eslint projen ts-node typescript vitest @aws-lambda-powertools/logger @aws-sdk/client-cloudformation @aws-sdk/client-codepipeline"
         },
         {
           "exec": "npx projen"

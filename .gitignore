@@ -31,7 +31,8 @@ jspm_packages/
 .yarn-integrity
 .cache
 cdk.out
-!/jest.config.json
+/test-reports/
+junit.xml
 /coverage/
 !/.github/workflows/build.yml
 /dist/changelog.md
@@ -51,4 +52,6 @@ cdk.out
 *.iml
 .vscode
 .DS_Store
+!/.github/workflows/datadog-software-composition-analysis.yml
+!/.github/workflows/datadog-static-analysis.yml
 !/.projenrc.ts
