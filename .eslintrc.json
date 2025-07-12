@@ -8,7 +8,8 @@
   "plugins": [
     "@typescript-eslint",
     "import",
-    "@stylistic"
+    "@stylistic",
+    "eslint-plugin-unused-imports"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -209,7 +210,8 @@
           "method"
         ]
       }
-    ]
+    ],
+    "unused-imports/no-unused-imports": "error"
   },
   "overrides": [
     {

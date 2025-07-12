@@ -4,6 +4,8 @@
     ".gitattributes",
     ".github/pull_request_template.md",
     ".github/workflows/build.yml",
+    ".github/workflows/datadog-software-composition-analysis.yml",
+    ".github/workflows/datadog-static-analysis.yml",
     ".github/workflows/pull-request-lint.yml",
     ".github/workflows/release.yml",
     ".github/workflows/upgrade-main.yml",
@@ -13,7 +15,6 @@
     ".projen/deps.json",
     ".projen/files.json",
     ".projen/tasks.json",
-    "jest.config.json",
     "LICENSE",
     "tsconfig.dev.json",
     "tsconfig.json"
