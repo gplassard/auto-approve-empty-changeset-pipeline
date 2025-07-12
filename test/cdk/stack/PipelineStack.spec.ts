@@ -1,8 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { describe, it, expect } from 'vitest';
 import { App } from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
-import { AppStack } from '../../../src/cdk/stack/AppStack';
+import { describe, it, expect } from 'vitest';
 import { PipelineStack } from '../../../src/cdk/stack/PipelineStack';
 
 describe('PipelineStack', () => {

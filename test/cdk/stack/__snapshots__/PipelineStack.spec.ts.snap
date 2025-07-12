@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`PipelineStack should produce the expected cloudformation 1`] = `
+exports[`PipelineStack > should produce the expected cloudformation 1`] = `
 {
   "Mappings": {
     "LatestNodeRuntimeMap": {
@@ -83,6 +83,9 @@ exports[`PipelineStack should produce the expected cloudformation 1`] = `
         "value": "nodejs22.x",
       },
       "eu-west-3": {
+        "value": "nodejs22.x",
+      },
+      "eusc-de-east-1": {
         "value": "nodejs22.x",
       },
       "il-central-1": {
@@ -224,7 +227,7 @@ exports[`PipelineStack should produce the expected cloudformation 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "31d0b2bcc35f7cabd95d5e4eacec4b3efd5e448adba1f0f7faf89465e84fe798.zip",
+          "S3Key": "e6ec21e434e006f799754c65f01b180bf9a60051ac75650b3c082e8852cfb66f.zip",
         },
         "Environment": {
           "Variables": {
@@ -241,25 +244,6 @@ exports[`PipelineStack should produce the expected cloudformation 1`] = `
         "Runtime": "nodejs18.x",
       },
       "Type": "AWS::Lambda::Function",
-    },
-    "autoapproveLogGroup27099ECA": {
-      "DeletionPolicy": "Retain",
-      "Properties": {
-        "LogGroupName": {
-          "Fn::Join": [
-            "",
-            [
-              "/aws/lambda/",
-              {
-                "Ref": "autoapproveA3E1FF56",
-              },
-            ],
-          ],
-        },
-        "RetentionInDays": 731,
-      },
-      "Type": "AWS::Logs::LogGroup",
-      "UpdateReplacePolicy": "Retain",
     },
     "autoapproveServiceRoleDefaultPolicy5A81E3EF": {
       "Properties": {
