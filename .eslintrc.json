@@ -154,6 +154,8 @@
         "devDependencies": [
           "**/bin/**",
           "**/src/cdk/**",
+          "**/*.test.ts",
+          "**/*.test.tsx",
           ".projenrc.ts",
           "projenrc/**/*.ts"
         ],
