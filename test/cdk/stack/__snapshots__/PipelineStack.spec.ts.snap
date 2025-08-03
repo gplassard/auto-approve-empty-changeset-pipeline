@@ -43,6 +43,9 @@ exports[`PipelineStack > should produce the expected cloudformation 1`] = `
       "ap-southeast-5": {
         "value": "nodejs22.x",
       },
+      "ap-southeast-6": {
+        "value": "nodejs22.x",
+      },
       "ap-southeast-7": {
         "value": "nodejs22.x",
       },
@@ -227,7 +230,7 @@ exports[`PipelineStack > should produce the expected cloudformation 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "e6ec21e434e006f799754c65f01b180bf9a60051ac75650b3c082e8852cfb66f.zip",
+          "S3Key": "4a04a3923ce28e1a4d09a3c5d862ce3c473c0c0eb213788911d27106934a2140.zip",
         },
         "Environment": {
           "Variables": {
