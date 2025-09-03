@@ -23,16 +23,18 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: 10.14.0
+          version: 10.15.0
       - uses: actions/setup-node@v4
         with:
-          node-version: 22.18.0
+          node-version: 22.19.0
           registry-url: https://npm.pkg.github.com
           cache: pnpm
       - name: Install dependencies
         run: pnpm i --no-frozen-lockfile
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: run projen
+        run: pnpm run projen
       - name: Configure Datadog Test Optimization
         uses: datadog/test-visibility-github-action@v2
         with:
