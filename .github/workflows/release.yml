@@ -22,7 +22,7 @@ jobs:
       CI: "true"
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Set git identity
@@ -30,12 +30,12 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
       - name: Setup pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
         with:
-          version: 10.15.0
+          version: 10.17.1
       - uses: actions/setup-node@v4
         with:
-          node-version: 22.19.0
+          node-version: 22.20.0
           registry-url: https://npm.pkg.github.com
           cache: pnpm
       - name: Install dependencies
@@ -70,7 +70,7 @@ jobs:
         continue-on-error: true
       - name: Upload artifact
         if: ${{ steps.git_remote.outputs.latest_commit == github.sha }}
-        uses: actions/upload-artifact@v4.4.0
+        uses: actions/upload-artifact@v4.6.2
         with:
           name: build-artifact
           path: dist
@@ -83,11 +83,11 @@ jobs:
       contents: write
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: 22.19.0
+          node-version: 22.20.0
       - name: Download build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: build-artifact
           path: dist
