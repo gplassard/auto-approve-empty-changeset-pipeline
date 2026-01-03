@@ -54,5 +54,6 @@ junit.xml
 .DS_Store
 !/.github/workflows/datadog-software-composition-analysis.yml
 !/.github/workflows/datadog-static-analysis.yml
+!/static-analysis.datadog.yaml
 install_test_visibility.sh
 !/.projenrc.ts
