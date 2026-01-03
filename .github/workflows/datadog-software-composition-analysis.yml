@@ -2,12 +2,7 @@
 
 name: Datadog-Software-Composition-Analysis
 on:
-  pull_request:
-    branches:
-      - main
-  push:
-    branches:
-      - main
+  push: {}
 jobs:
   software-composition-analysis:
     runs-on: ubuntu-latest
