@@ -32,8 +32,8 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10.27.0
-      - uses: actions/setup-node@v4
+          version: 10.30.3
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 24.9.0
           registry-url: https://npm.pkg.github.com
@@ -43,7 +43,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Configure Datadog Test Optimization
-        uses: datadog/test-visibility-github-action@v2
+        uses: datadog/test-visibility-github-action@f4b026bb8b8b53f323960cf86a849a0231ff93b9
         with:
           languages: js
           api_key: ${{secrets.DD_API_KEY}}

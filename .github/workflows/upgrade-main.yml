@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: read
     outputs:
       patch_created: ${{ steps.create_patch.outputs.patch_created }}
     steps:
@@ -22,24 +21,15 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10.27.0
-      - uses: actions/setup-node@v4
+          version: 10.30.3
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
         with:
           node-version: 24.9.0
-          registry-url: https://npm.pkg.github.com
-          cache: pnpm
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upgrade dependencies
         run: npx projen upgrade
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Update dependencies
-        run: pnpm update --no-save
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Find mutations
         id: create_patch
         run: |-
@@ -59,8 +49,7 @@ jobs:
     needs: upgrade
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
+      contents: read
     if: ${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Generate token
@@ -72,7 +61,6 @@ jobs:
           permission-pull-requests: write
           permission-contents: write
           permission-workflows: write
-          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Checkout
         uses: actions/checkout@v5
         with:
