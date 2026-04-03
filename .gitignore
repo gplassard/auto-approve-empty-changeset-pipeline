@@ -55,5 +55,7 @@ junit.xml
 !/.github/workflows/datadog-software-composition-analysis.yml
 !/.github/workflows/datadog-static-analysis.yml
 !/static-analysis.datadog.yaml
+!/.github/workflows/datadog-secret-scanning.yml
+!/.github/workflows/datadog-infra-as-code-security.yml
 install_test_visibility.sh
 !/.projenrc.ts

@@ -26,6 +26,10 @@
     "strictPropertyInitialization": true,
     "stripInternal": true,
     "target": "ES2020",
+    "types": [
+      "aws-lambda",
+      "node"
+    ],
     "skipLibCheck": true
   },
   "include": [
