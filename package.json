@@ -1,9 +1,5 @@
 {
   "name": "auto-approve-empty-changeset-pipeline",
-  "bin": {
-    "app.ts": "bin/app.ts",
-    "pipeline.ts": "bin/pipeline.ts"
-  },
   "scripts": {
     "build": "npx projen build",
     "bump": "npx projen bump",
