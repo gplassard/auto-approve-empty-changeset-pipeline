@@ -6,15 +6,14 @@ const project = new TypescriptApplicationProject({
   name: 'auto-approve-empty-changeset-pipeline',
   devDeps: ['aws-cdk', 'aws-cdk-lib', 'constructs', 'esbuild', '@types/aws-lambda'],
   deps: ['@aws-sdk/client-codepipeline', '@aws-sdk/client-cloudformation', '@aws-lambda-powertools/logger'],
-  srcdir: '.',
   scripts: {
-    'cdk:pipeline': 'yarn cdk --app \'ts-node bin/pipeline.ts\'',
-    'cdk:app': 'yarn cdk --app \'ts-node bin/app.ts\'',
+    'cdk:pipeline': 'pnpm cdk --app \'ts-node src/bin/pipeline.ts\'',
+    'cdk:app': 'pnpm cdk --app \'ts-node src/bin/app.ts\'',
   },
   gitignore: ['cdk.out'],
   eslintOptions: {
     dirs: ['.'],
-    devdirs: ['bin', 'src/cdk'],
+    devdirs: ['src/bin', 'src/cdk'],
   },
   tsconfig: {
     compilerOptions: {

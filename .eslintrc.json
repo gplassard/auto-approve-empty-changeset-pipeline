@@ -152,7 +152,7 @@
       "error",
       {
         "devDependencies": [
-          "**/bin/**",
+          "**/src/bin/**",
           "**/src/cdk/**",
           "**/*.test.ts",
           "**/*.test.tsx",

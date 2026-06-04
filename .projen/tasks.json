@@ -51,7 +51,7 @@
       "name": "cdk:app",
       "steps": [
         {
-          "exec": "yarn cdk --app 'ts-node bin/app.ts'"
+          "exec": "pnpm cdk --app 'ts-node src/bin/app.ts'"
         }
       ]
     },
@@ -59,7 +59,7 @@
       "name": "cdk:pipeline",
       "steps": [
         {
-          "exec": "yarn cdk --app 'ts-node bin/pipeline.ts'"
+          "exec": "pnpm cdk --app 'ts-node src/bin/pipeline.ts'"
         }
       ]
     },
@@ -134,7 +134,7 @@
       },
       "steps": [
         {
-          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern $@ . bin src/cdk projenrc .projenrc.ts",
+          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern $@ . src/bin src/cdk projenrc .projenrc.ts",
           "receiveArgs": true
         }
       ]

@@ -6,7 +6,7 @@ junit.xml
 permissions-backup.acl
 /test/
 /tsconfig.dev.json
-/./
+/src/
 !/lib/
 !/lib/**/*.js
 !/lib/**/*.d.ts
