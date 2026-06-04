@@ -35,10 +35,7 @@ cdk.out
 junit.xml
 /coverage/
 !/.github/workflows/build.yml
-/dist/changelog.md
-/dist/version.txt
-!/.github/workflows/release.yml
-!/.github/workflows/upgrade-main.yml
+!/.github/workflows/upgrade.yml
 !/.github/pull_request_template.md
 !/test/
 !/tsconfig.json
@@ -48,6 +45,8 @@ junit.xml
 /dist/
 !/.eslintrc.json
 !/.npmrc
+!/pnpm-workspace.yaml
+!/.ncurc.js
 .idea
 *.iml
 .vscode

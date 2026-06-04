@@ -2,6 +2,9 @@
 
 name: build
 on:
+  push:
+    branches:
+      - main
   pull_request: {}
   workflow_dispatch: {}
 jobs:
@@ -23,10 +26,10 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@f40ffcd9367d9f12939873eb1018b921a783ffaa
         with:
-          version: 10.33.0
+          version: 11.5.1
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
-          node-version: 24.15.0
+          node-version: 24.16.0
           registry-url: https://npm.pkg.github.com
           cache: pnpm
       - name: Install dependencies
@@ -36,16 +39,14 @@ jobs:
       - name: run projen
         run: pnpm run projen
       - name: Configure Datadog Test Optimization
-        uses: datadog/test-visibility-github-action@ef8406bf5f987037fcbe3bf8ecf023f5dd1f9e36
+        uses: datadog/test-visibility-github-action@4e7afb05b464fd349275e41e65a7f4de83e7f46b
         with:
           languages: js
           api_key: ${{secrets.DD_API_KEY}}
           site: datadoghq.eu
-          js-tracer-version: 5.74.0
+          js-tracer-version: 5.106.0
       - name: build
-        run: pnpm exec projen build
-        env:
-          NODE_OPTIONS: -r ${{ env.DD_TRACE_PACKAGE }} --import ${{ env.DD_TRACE_ESM_IMPORT }}
+        run: pnpm exec projen build:ci
       - name: build-tests
         run: pnpm run test:compile
       - name: lint

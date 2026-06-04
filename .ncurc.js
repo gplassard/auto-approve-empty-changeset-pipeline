@@ -1,0 +1,1 @@
+cooldown: packageName => (packageName == '@gplassard/projen-extensions' ? 0 : 3)
