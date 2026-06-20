@@ -1,20 +1,20 @@
 // .projenrc.ts
 import { TypescriptApplicationProject } from '@gplassard/projen-extensions';
+import { TextFile } from 'projen';
 
 // opinionated wrapper around projen TypeScriptProject
 const project = new TypescriptApplicationProject({
   name: 'auto-approve-empty-changeset-pipeline',
   devDeps: ['aws-cdk', 'aws-cdk-lib', 'constructs', 'esbuild', '@types/aws-lambda'],
   deps: ['@aws-sdk/client-codepipeline', '@aws-sdk/client-cloudformation', '@aws-lambda-powertools/logger'],
-  srcdir: '.',
   scripts: {
-    'cdk:pipeline': 'yarn cdk --app \'ts-node bin/pipeline.ts\'',
-    'cdk:app': 'yarn cdk --app \'ts-node bin/app.ts\'',
+    'cdk:pipeline': 'pnpm cdk --app \'ts-node src/bin/pipeline.ts\'',
+    'cdk:app': 'pnpm cdk --app \'ts-node src/bin/app.ts\'',
   },
   gitignore: ['cdk.out'],
   eslintOptions: {
     dirs: ['.'],
-    devdirs: ['bin', 'src/cdk'],
+    devdirs: ['src/bin', 'src/cdk'],
   },
   tsconfig: {
     compilerOptions: {
@@ -22,4 +22,13 @@ const project = new TypescriptApplicationProject({
     },
   },
 });
+
+new TextFile(project, '.pnpmfile.mjs', {
+  lines: [
+    '// Intentionally empty.',
+    '// Some CI setup steps export npm_config_pnpmfile/NPM_CONFIG_PNPMFILE.',
+    '// Keeping this file present lets nested `pnpm exec` calls, such as CDK Lambda bundling, run reliably.',
+  ],
+});
+
 project.synth();

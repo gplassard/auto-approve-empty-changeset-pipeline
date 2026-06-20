@@ -24,29 +24,34 @@
         }
       ]
     },
-    "bump": {
-      "name": "bump",
-      "description": "Bumps version based on latest git tag and generates a changelog entry",
-      "env": {
-        "OUTFILE": "package.json",
-        "CHANGELOG": "dist/changelog.md",
-        "BUMPFILE": "dist/version.txt",
-        "RELEASETAG": "dist/releasetag.txt",
-        "RELEASE_TAG_PREFIX": "",
-        "BUMP_PACKAGE": "commit-and-tag-version@^12"
-      },
+    "build:ci": {
+      "name": "build:ci",
       "steps": [
         {
-          "builtin": "release/bump-version"
+          "spawn": "default"
+        },
+        {
+          "spawn": "pre-compile"
+        },
+        {
+          "spawn": "compile"
+        },
+        {
+          "spawn": "post-compile"
+        },
+        {
+          "spawn": "test:ci"
+        },
+        {
+          "spawn": "package"
         }
-      ],
-      "condition": "git log --oneline -1 | grep -qv \"chore(release):\""
+      ]
     },
     "cdk:app": {
       "name": "cdk:app",
       "steps": [
         {
-          "exec": "yarn cdk --app 'ts-node bin/app.ts'"
+          "exec": "pnpm cdk --app 'ts-node src/bin/app.ts'"
         }
       ]
     },
@@ -54,7 +59,7 @@
       "name": "cdk:pipeline",
       "steps": [
         {
-          "exec": "yarn cdk --app 'ts-node bin/pipeline.ts'"
+          "exec": "pnpm cdk --app 'ts-node src/bin/pipeline.ts'"
         }
       ]
     },
@@ -129,7 +134,7 @@
       },
       "steps": [
         {
-          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern $@ . bin src/cdk projenrc .projenrc.ts",
+          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern $@ . src/bin src/cdk projenrc .projenrc.ts",
           "receiveArgs": true
         }
       ]
@@ -176,33 +181,21 @@
       "name": "pre-compile",
       "description": "Prepare the project for compilation"
     },
-    "release": {
-      "name": "release",
-      "description": "Prepare a release from \"main\" branch",
-      "env": {
-        "RELEASE": "true"
-      },
-      "steps": [
-        {
-          "exec": "rm -fr dist"
-        },
-        {
-          "spawn": "bump"
-        },
-        {
-          "spawn": "build"
-        },
-        {
-          "spawn": "unbump"
-        },
-        {
-          "exec": "git diff --ignore-space-at-eol --exit-code"
-        }
-      ]
-    },
     "test": {
       "name": "test",
       "description": "Run tests",
+      "steps": [
+        {
+          "exec": "vitest run -u",
+          "receiveArgs": true
+        }
+      ]
+    },
+    "test:ci": {
+      "name": "test:ci",
+      "env": {
+        "NODE_OPTIONS": "--import /home/runner/work/auto-approve-empty-changeset-pipeline/auto-approve-empty-changeset-pipeline/.datadog/lib/node_modules/dd-trace/register.js -r /home/runner/work/auto-approve-empty-changeset-pipeline/auto-approve-empty-changeset-pipeline/.datadog/lib/node_modules/dd-trace/ci/init"
+      },
       "steps": [
         {
           "exec": "vitest run -u",
@@ -227,23 +220,6 @@
         }
       ]
     },
-    "unbump": {
-      "name": "unbump",
-      "description": "Restores version to 0.0.0",
-      "env": {
-        "OUTFILE": "package.json",
-        "CHANGELOG": "dist/changelog.md",
-        "BUMPFILE": "dist/version.txt",
-        "RELEASETAG": "dist/releasetag.txt",
-        "RELEASE_TAG_PREFIX": "",
-        "BUMP_PACKAGE": "commit-and-tag-version@^12"
-      },
-      "steps": [
-        {
-          "builtin": "release/reset-version"
-        }
-      ]
-    },
     "upgrade": {
       "name": "upgrade",
       "description": "upgrade dependencies",
@@ -258,7 +234,7 @@
           "exec": "pnpm i --no-frozen-lockfile"
         },
         {
-          "exec": "pnpm update @gplassard/projen-extensions @stylistic/eslint-plugin @types/aws-lambda @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-cdk aws-cdk-lib commit-and-tag-version constructs esbuild eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-unused-imports eslint projen ts-node typescript vitest @aws-lambda-powertools/logger @aws-sdk/client-cloudformation @aws-sdk/client-codepipeline"
+          "exec": "pnpm update @gplassard/projen-extensions @stylistic/eslint-plugin @types/aws-lambda @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-cdk aws-cdk-lib constructs esbuild eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-unused-imports eslint projen ts-node typescript vitest @aws-lambda-powertools/logger @aws-sdk/client-cloudformation @aws-sdk/client-codepipeline"
         },
         {
           "exec": "pnpm exec projen"

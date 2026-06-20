@@ -1,5 +1,5 @@
 import { App } from 'aws-cdk-lib';
-import { PipelineStack } from '../src/cdk/stack/PipelineStack';
+import { PipelineStack } from '../cdk/stack/PipelineStack';
 
 const app = new App();
 new PipelineStack(app, 'pipeline', {

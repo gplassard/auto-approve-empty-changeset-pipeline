@@ -98,6 +98,12 @@ export class PipelineStack extends Stack {
       architecture: Architecture.ARM_64,
       entry: 'src/lambdas/handlers/auto-approve.ts',
       runtime: Runtime.NODEJS_18_X,
+      bundling: {
+        environment: {
+          NPM_CONFIG_PNPMFILE: '',
+          npm_config_pnpmfile: '',
+        },
+      },
 
       environment: {
         LOG_LEVEL: 'DEBUG',

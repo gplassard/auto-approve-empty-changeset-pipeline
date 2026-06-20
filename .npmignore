@@ -4,11 +4,9 @@
 junit.xml
 /coverage/
 permissions-backup.acl
-/dist/changelog.md
-/dist/version.txt
 /test/
 /tsconfig.dev.json
-/./
+/src/
 !/lib/
 !/lib/**/*.js
 !/lib/**/*.d.ts
