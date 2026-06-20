@@ -1,5 +1,6 @@
 // .projenrc.ts
 import { TypescriptApplicationProject } from '@gplassard/projen-extensions';
+import { TextFile } from 'projen';
 
 // opinionated wrapper around projen TypeScriptProject
 const project = new TypescriptApplicationProject({
@@ -21,4 +22,13 @@ const project = new TypescriptApplicationProject({
     },
   },
 });
+
+new TextFile(project, '.pnpmfile.mjs', {
+  lines: [
+    '// Intentionally empty.',
+    '// Some CI setup steps export npm_config_pnpmfile/NPM_CONFIG_PNPMFILE.',
+    '// Keeping this file present lets nested `pnpm exec` calls, such as CDK Lambda bundling, run reliably.',
+  ],
+});
+
 project.synth();
