@@ -18,6 +18,7 @@ const project = new TypescriptApplicationProject({
     },
   },
 });
+project.eslint?.addIgnorePattern('vitest.config.ts');
 project.addTask('cdk:pipeline', {
   exec: 'pnpm cdk --app \'ts-node src/bin/pipeline.ts\'',
 });
