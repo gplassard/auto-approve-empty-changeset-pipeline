@@ -23,7 +23,7 @@
     "projen": "projen"
   },
   "devDependencies": {
-    "@gplassard/projen-extensions": "^0.1.60",
+    "@gplassard/projen-extensions": "^0.1.67",
     "@stylistic/eslint-plugin": "^2.13.0",
     "@types/aws-lambda": "^8.10.162",
     "@types/node": "^25.9.4",
@@ -37,7 +37,7 @@
     "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-unused-imports": "^4.4.1",
-    "projen": "^0.99.80",
+    "projen": "^0.101.22",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.3",
     "vitest": "^4.1.9"
