@@ -24,28 +24,28 @@
   },
   "devDependencies": {
     "@gplassard/projen-extensions": "^0.1.67",
-    "@stylistic/eslint-plugin": "^2.13.0",
+    "@stylistic/eslint-plugin": "^5.10.0",
     "@types/aws-lambda": "^8.10.162",
-    "@types/node": "^25.9.4",
+    "@types/node": "^26.1.2",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
-    "aws-cdk": "^2.1128.1",
-    "aws-cdk-lib": "^2.260.0",
+    "aws-cdk": "^2.1134.0",
+    "aws-cdk-lib": "^2.263.0",
     "constructs": "^10.0.0",
     "esbuild": "^0.28.1",
-    "eslint": "^9.39.4",
+    "eslint": "^9.39.5",
     "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-unused-imports": "^4.4.1",
     "projen": "^0.101.22",
     "tsx": "^4.23.1",
     "typescript": "^6",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.10"
   },
   "dependencies": {
-    "@aws-lambda-powertools/logger": "^2.33.1",
-    "@aws-sdk/client-cloudformation": "^3.1076.0",
-    "@aws-sdk/client-codepipeline": "^3.1076.0"
+    "@aws-lambda-powertools/logger": "^2.34.0",
+    "@aws-sdk/client-cloudformation": "^3.1101.0",
+    "@aws-sdk/client-codepipeline": "^3.1101.0"
   },
   "pnpm": {},
   "devEngines": {
